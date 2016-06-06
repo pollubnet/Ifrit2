@@ -1,0 +1,33 @@
+﻿<h1>@ViewData["Title"]</h1>
+
+@if (ViewData["Message"] != null)
+{
+    <div class="alert alert-success">
+        <span class="glyphicon glyphicon-send"></span> @ViewData["Message"]
+    </div>
+}
+
+<div>
+    <!-- prosty, ręcznie stworzony formularz -->
+    <form action="@Url.Action("SetColor")" method="post" class="form-inline" role="form">
+        <label>
+            Device: <select name="device" class="form-control">
+                <option value="uwp">UWP1</option>
+                <option value="uwp2">UWP2</option>
+                <option value="uwp3">UWP3</option>
+                <option value="netmf">NETMF</option>
+            </select>
+        </label>
+
+        <label class="radio-inline"><input name="color" value="r" type="radio" checked="checked" /> Red</label>
+        <label class="radio-inline"><input name="color" value="g" type="radio" /> Green</label>
+        <label class="radio-inline"><input name="color" value="b" type="radio" /> Blue</label>
+
+        <input type="submit" value="Set" class="btn btn-success" />
+    </form>
+
+
+    <a asp-controller="Home" asp-action="Index" asp-route-color="r" asp-route-device="uwp" class="btn btn-default" role="button">Red</a>
+    <a asp-controller="Home" asp-action="Index" asp-route-color="g" asp-route-device="uwp" class="btn btn-default" role="button">Green</a>
+    <a asp-controller="Home" asp-action="Index" asp-route-color="b" asp-route-device="uwp" class="btn btn-default" role="button">Blue</a>
+</div>
